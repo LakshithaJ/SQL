@@ -42,3 +42,16 @@ WHERE CustomerName LIKE 'a__%';
 -- Return all customers that have "r" in the second position:
 SELECT * FROM Customers
 WHERE CustomerName LIKE '_r%';
+
+-- SQL IN Operator
+-- The IN operator allows you to specify multiple values in a WHERE clause.
+-- The IN operator is a shorthand for multiple OR conditions.
+
+-- Syntax
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+
+-- Return all customers from 'Germany', 'France', or 'UK'
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
