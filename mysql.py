@@ -71,3 +71,8 @@ myresult = mycursor.fetchall()
 
 for x in myresult:
   print(x)
+
+# The fetchone() method will return the first row of the result:
+mycursor.execute("SELECT * FROM customers")
+myresult = mycursor.fetchone()
+print(myresult)
