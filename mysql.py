@@ -76,3 +76,32 @@ for x in myresult:
 mycursor.execute("SELECT * FROM customers")
 myresult = mycursor.fetchone()
 print(myresult)
+
+# Select record(s) where the address is "Park Lane 38": result:
+sql = "SELECT * FROM customers WHERE address ='Park Lane 38'"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+# Wildcard Characters
+# Select records where the address contains the word "way":
+sql = "SELECT * FROM customers WHERE address LIKE '%way%'"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+# Prevent SQL Injection
+# When query values are provided by the user, you should escape the values.
+# This is to prevent SQL injections, which is a common web hacking technique to destroy or misuse your database.
+sql = "SELECT * FROM customers WHERE address = %s"
+adr = ("Yellow Garden 2", )
+mycursor.execute(sql, adr)
+
+myresult = mycursor.fetchall()
+for x in myresult:
+  print(x)
+
