@@ -147,3 +147,18 @@ mycursor.execute(sql)
 # Delete the table "customers" if it exists:
 sql = "DROP TABLE IF EXISTS customers"
 mycursor.execute(sql)
+
+# Overwrite the address column from "Valley 345" to "Canyon 123":
+sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
+mycursor.execute(sql)
+mydb.commit()
+
+print(mycursor.rowcount, "record(s) affected")
+
+# Escape values by using the placeholder %s method:
+sql = "UPDATE customers SET address = %s WHERE address = %s"
+val = ("Valley 345", "Canyon 123")
+mycursor.execute(sql, val)
+mydb.commit()
+
+print(mycursor.rowcount, "record(s) affected")
