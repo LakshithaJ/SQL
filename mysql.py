@@ -56,3 +56,18 @@ val = [
 
 mycursor.executemany(sql, val)
 mydb.commit()
+
+# Select all records from the "customers" table, and display the result:
+mycursor.execute("SELECT * FROM customers")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+# Select only the name and address columns:
+mycursor.execute("SELECT name, address FROM customers")
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
