@@ -139,3 +139,11 @@ mycursor.execute(sql, adr)
 mydb.commit()
 
 print(mycursor.rowcount, "record(s) deleted")
+
+# Delete the table "customers":
+sql = "DROP TABLE customers"
+mycursor.execute(sql)
+
+# Delete the table "customers" if it exists:
+sql = "DROP TABLE IF EXISTS customers"
+mycursor.execute(sql)
