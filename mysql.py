@@ -179,3 +179,42 @@ myresult = mycursor.fetchall()
 
 for x in myresult:
   print(x)
+
+# users
+# { id: 1, name: 'John', fav: 154},
+# { id: 2, name: 'Peter', fav: 154},
+# { id: 3, name: 'Amy', fav: 155},
+# { id: 4, name: 'Hannah', fav:},
+# { id: 5, name: 'Michael', fav:}
+# products
+# { id: 154, name: 'Chocolate Heaven' },
+# { id: 155, name: 'Tasty Lemons' },
+# { id: 156, name: 'Vanilla Dreams' }
+
+# Join users and products to see the name of the users favorite product:
+sql = "SELECT \
+  users.name AS user, \
+  products.name AS favorite \
+  FROM users \
+  INNER JOIN products ON users.fav = products.id"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+# LEFT JOIN
+# Select all users and their favorite product:
+sql = "SELECT \
+  users.name AS user, \
+  products.name AS favorite \
+  FROM users \
+  LEFT JOIN products ON users.fav = products.id"
+
+# RIGHT JOIN
+# Select all products, and the user(s) who have them as their favorite:
+sql = "SELECT \
+  users.name AS user, \
+  products.name AS favorite \
+  FROM users \
+  RIGHT JOIN products ON users.fav = products.id"
