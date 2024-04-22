@@ -78,3 +78,50 @@ WHERE OrderDate BETWEEN #07/01/1996# AND #07/31/1996#;
 
 SELECT * FROM Orders
 WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+-- SQL Aliases
+-- SQL aliases are used to give a table, or a column in a table, a temporary name.
+-- Aliases are often used to make column names more readable.
+-- An alias only exists for the duration of that query.
+-- An alias is created with the AS keyword.
+
+SELECT CustomerID AS ID
+FROM Customers;
+
+-- AS is Optional
+-- Actually, in most database languages, you can skip the AS keyword and get the same result:
+SELECT CustomerID ID
+FROM Customers;
+
+-- Syntax
+-- When alias is used on column:
+SELECT column_name AS alias_name
+FROM table_name;
+
+-- When alias is used on table:
+SELECT column_name(s)
+FROM table_name AS alias_name;
+
+SELECT CustomerID AS ID, CustomerName AS Customer
+FROM Customers;
+
+-- Using "double quotes" for aliases with space characters:
+SELECT ProductName AS "My Great Products"
+FROM Products;
+
+-- Concatenate Columns
+-- The following SQL statement creates an alias named "Address" that combine four columns (Address, PostalCode, City and Country):
+
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+FROM Customers;
+
+-- MySQL Example
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+
+-- Refer to the Customers table as Persons instead:
+SELECT * FROM Customers AS Persons;
+
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
